@@ -1,18 +1,18 @@
-import React from 'react';
-import Nav from './Nav';
-import VideoPlayer from './VideoPlayer';
-import VideoList from './VideoList';
+import React from "react";
+import Nav from "./Nav";
+import VideoPlayer from "./VideoPlayer";
+import VideoList from "./VideoList";
+import { searchYouTube } from "../searchYouTube";
+import { YOUTUBE_API_KEY } from "../../config/youtube";
 
 const App = () => (
   <div>
     <Nav />
-    <div className="col-md-7">
-      <VideoPlayer/>
-    </div>
-    <div className="col-md-5">
-      <VideoList/>
+    <div className="parent">
+      <VideoPlayer />
+      <VideoList />
     </div>
   </div>
-);
+)
 
 export default App;

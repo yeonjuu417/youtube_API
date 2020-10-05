@@ -7,11 +7,11 @@ import { fakeData } from './fakeData';
 configure({ adapter: new Adapter() });
 
 describe('VideoList', () => {
-  test('should be a stateless functional component', () => {
+  test('함수 컴포넌트로 작성되어야 합니다', () => {
     expect(React.Component.isPrototypeOf(VideoList)).toBeFalsy();
   });
 
-  test('should render one `VideoListEntry` when given one video', () => {
+  test('하나의 비디오가 주어졌을 때, 하나의 `VideoListEntry` 컴포넌트가 표시되어야 합니다', () => {
     const wrap = shallow(
       <VideoList videos={fakeData.slice(-1)} />
     );
@@ -20,7 +20,7 @@ describe('VideoList', () => {
     expect(wrap.children().everyWhere(child => child.name() === 'VideoListEntry')).toBeTruthy();
   });
 
-  test('should render three `VideoListEntry` when given three videos', function() {
+  test('세개의 비디오가 주어졌을 때, 세개의 `VideoListEntry` 컴포넌트가 표시되어야 합니다', function () {
     const wrap = shallow(
       <VideoList videos={fakeData.slice(-3)} />
     );
@@ -29,12 +29,4 @@ describe('VideoList', () => {
     expect(wrap.children().everyWhere(child => child.name() === 'VideoListEntry')).toBeTruthy();
   });
 
-  test('should render five `VideoListEntry` when given five videos', function() {
-    const wrap = shallow(
-      <VideoList videos={fakeData.slice(-5)} />
-    );
-    expect(wrap.exists()).toBeTruthy();
-    expect(wrap.props().children.length).toBe(5);
-    expect(wrap.children().everyWhere(child => child.name() === 'VideoListEntry')).toBeTruthy();
-  });
 })

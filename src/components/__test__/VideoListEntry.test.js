@@ -6,36 +6,36 @@ import { fakeData } from './fakeData';
 configure({ adapter: new Adapter() });
 
 describe('VideoListEntry', () => {
-  let cuteCatVideo, superCuteCatVideo, codeStatesVideo;
+  let commercialVideo, johnnyVideo, jsVideo;
 
   beforeEach(() => {
-    cuteCatVideo = shallow(<VideoListEntry video={fakeData[0]} />);
-    superCuteCatVideo = shallow(<VideoListEntry video={fakeData[1]} />);
-    codeStatesVideo = shallow(<VideoListEntry video={fakeData[2]} />);
+    commercialVideo = shallow(<VideoListEntry video={fakeData[0]} />);
+    johnnyVideo = shallow(<VideoListEntry video={fakeData[1]} />);
+    jsVideo = shallow(<VideoListEntry video={fakeData[2]} />);
   })
 
-  test('should be a stateless functional component', () => {
+  test('함수 컴포넌트로 작성되어야 합니다', () => {
     expect(React.Component.isPrototypeOf(VideoListEntry)).toBeFalsy();
   });
 
-  test('should dynamically render a video\'s image', () => {
+  test('동적으로 비디오의 썸네일 이미지가 표시되어야 합니다', () => {
     const selector = '.media-object';
-    expect(cuteCatVideo.find(selector).props().src).toBe('https://i.redd.it/oa78q1ng7lc01.jpg');
-    expect(superCuteCatVideo.find(selector).props().src).toBe('https://pbs.twimg.com/profile_images/567285191169687553/7kg_TF4l.jpeg');
-    expect(codeStatesVideo.find(selector).props().src).toBe('https://cdn-images-1.medium.com/max/1600/1*udhgH25bIWU1AQeYvwVKCQ.jpeg');
+    expect(commercialVideo.find(selector).props().src).toBe('https://i.ytimg.com/vi/Mb-pqAnfaeI/default.jpg');
+    expect(johnnyVideo.find(selector).props().src).toBe('https://i.ytimg.com/vi/RRSYfDfujGk/default.jpg');
+    expect(jsVideo.find(selector).props().src).toBe('https://i.ytimg.com/vi/p5vI5OrLJU8/default.jpg');
   });
 
-  test('should dynamically render a video\'s title', () => {
+  test('동적으로 비디오의 제목이 표시되어야 합니다', () => {
     const selector = '.video-list-entry-title';
-    expect(cuteCatVideo.find(selector).text()).toBe('Cute cat video');
-    expect(superCuteCatVideo.find(selector).text()).toBe('Super cute cat video');
-    expect(codeStatesVideo.find(selector).text()).toBe('Code States opens extension school on Mars');
+    expect(commercialVideo.find(selector).text()).toBe('[코드스테이츠] 배움의 기회를 미루지 마세요');
+    expect(johnnyVideo.find(selector).text()).toBe('개발과 코딩을 배우기 전, 알아야 할 5가지');
+    expect(jsVideo.find(selector).text()).toBe('자바스크립트로 할 수 있는 7가지');
   });
 
-  test('should dynamically render a video\'s description', () => {
+  test('동적으로 비디오의 설명이 표시되어야 합니다', () => {
     const selector = '.video-list-entry-detail';
-    expect(cuteCatVideo.find(selector).text()).toBe('The best cat video on the internet!');
-    expect(superCuteCatVideo.find(selector).text()).toBe('Better than the best cat video on the internet!');
-    expect(codeStatesVideo.find(selector).text()).toBe('Watch the ribbon cutting of the first coding bootcamp in space');
+    expect(commercialVideo.find(selector).text()).toBe('코드스테이츠 엔지니어 박준홍님의 불꽃연기를 감상하세요');
+    expect(johnnyVideo.find(selector).text()).toBe('코드스테이츠 CPO 구일모님의 이야기를 들어봅시다');
+    expect(jsVideo.find(selector).text()).toBe('코드스테이츠 엔지니어 이호용님이 자바스크립트에 대해 소개합니다');
   });
 });
