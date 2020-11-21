@@ -5,18 +5,10 @@ import VideoListEntry from './VideoListEntry';
 import { fakeData } from './__test__/fakeData';
 console.log(fakeData)
 
-const VideoList = () => (
+const VideoList = ({videos,handleClick}) => (//props.videos 구조분해 할당 공부 하기 
   <div className="video-list media">
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-  </div>
+    {videos.map(el => <VideoListEntry key = {el.etag} video = {el} handleClick={handleClick}/>)}
+    </div>
 );
 
 export default VideoList;
